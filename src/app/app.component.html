@@ -1,0 +1,36 @@
+
+<div class="wrapper">
+  <header>Todo App</header>
+  <div class="inputField">
+      <input [(ngModel)]="newTask">
+      <button (click)="add()">Add</button>
+  </div>
+
+  <div class="todoList">
+    <div>
+      Tasks
+      <ng-container *ngIf="taskList.length > 0; else noTask">
+        <ul class="todoList">
+          <li *ngFor="let task of taskList">
+            {{task}}
+            <button (click)="remove(task)">Remove</button>
+            <button (click)="done(task)">Done</button>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #noTask>
+        <p>No tasks, you have free time!</p>
+      </ng-template>
+    </div>
+
+    <div>
+      Tasks completed: {{taskDone.length}}
+      <ul>
+        <li *ngFor="let task of taskDone">
+          {{task}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
